@@ -10,6 +10,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
+import java.nio.file.Files;
 import java.util.List;
 
 import org.apache.logging.log4j.LogManager;
@@ -168,7 +169,7 @@ public class RestDataAction extends BaseRestHandler {
             try {
                 final boolean useLocalFile = outputFile != null;
                 if (outputFile == null) {
-                    outputFile = File.createTempFile("es_df_output_", ".dat");
+                    outputFile = Files.createTempFile("es_df_output_", ".dat").toFile();
                 }
                 if (logger.isDebugEnabled()) {
                     logger.debug("outputFile: {}", outputFile.getAbsolutePath());
